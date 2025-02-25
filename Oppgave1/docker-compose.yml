@@ -7,7 +7,7 @@ services:
     restart: always
     environment:
       MYSQL_DATABASE: product_db
-      MYSQL_USER:  product-api
+      MYSQL_USER: product-api
       MYSQL_PASSWORD: securepass
       MYSQL_ROOT_PASSWORD: rootpass
     ports:
@@ -22,10 +22,9 @@ services:
     depends_on:
       - db
     environment:
+      DATABASE_URL: "mysql+pymysql://product-api:securepass@db/product_db"
     ports:
       - "8080:8080"
-      - "5000:5000"
-
   nginx:
     image: nginx:latest
     container_name: nginx_proxy
