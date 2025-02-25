@@ -9,10 +9,6 @@
 
 ```
 ## Fremgangsmåte
-```
-docker-compose down -v  
-docker-compose up -d --build  
-```
 
 ```
 curl http://localhost/api/health  # Skal returnere "API OK"
@@ -37,6 +33,8 @@ docker push juzt3r/eksamen-api:latest
 # nginx
 docker push juzt3r/eksamen-nginx:latest
 ```
+
+### Fix docker-compose.yml til å inkludere juzt3r/eksamen-api:lates og juzt3r/eksamen-nginx:lates
 
 ```
 # Sletter gamle volumer og containere
