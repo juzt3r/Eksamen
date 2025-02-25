@@ -47,9 +47,11 @@ docker-compose up -d
 
 
 ### Verifisere at alt fungerer
-``` curl http://localhost/api/health ```
-``` curl http://localhost/api/products ```
-``` curl http://localhost/api/products/2 ```
+``` 
+curl http://localhost/api/health 
+curl http://localhost/api/products 
+curl http://localhost/api/products/2 
+```
 
 
 ### Docker URL
