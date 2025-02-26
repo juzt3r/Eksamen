@@ -1,13 +1,27 @@
-#
+# Oppgave 3
 
+## Oppgavetekst
+```bash
+✔Oppgave 3: Deploy API til AWS EC2 med Nginx (20%)
+1. Opprett en egen VPC i AWS.
+2. Opprett en EC2-instans i Free Tier (Amazon Linux eller Ubuntu) og sørg for at EC2-instansen er
+opprettet innenfor denne VPC-en.
+3. Installer og konfigurer Docker og Docker Compose.
+4. Konfigurer docker-compose.yml for å trekke ned API og Nginx-images fra Docker Hub.
+5. Eksponer API-et via Nginx på port 80 slik at det er offentlig tilgjengelig.
+6. For testing: Tillatt testing direkte på API på port 8080
+7. Test API-et med curl, 'swagger', 'scalar' eller 'Postman'. Testene skal kjøres mot public IP'en til EC2-
+instansen.
+8. Dokumenter stegene og IP-adressen til den kjørende tjenesten.
+9. Lag en video (5-10 minutter) som viser hele prosessen, inkludert:
+Opprettelse av EC2-instans i den opprettede VPC-en.
+Hvordan man kobler til EC2-instansen med SSH.
+Overføring av 'docker-compose.yml' til serveren med scp.
+Hvordan .pem-filen brukes for sikker tilkobling.
+Installasjon av Docker
+Start docker-compose.yml (docker-compose up -d)
+Test av API-et som nå kjører på en EC2 maskin med en public addresse
+``` 
 
-## Opprette VPC
-
-aws ec2 create-vpc --instance-tenancy "default" --cidr-block "10.0.0.0/24" --tag-specifications '{"resourceType":"vpc","tags":[{"key":"Name","value":"eksamen_api"}]}' 
-
-
-## Opprett EC2
-
-aws ec2 create-security-group --group-name "launch-wizard-1" --description "launch-wizard-1 created 2025-02-25T21:43:00.175Z" --vpc-id "vpc-059275b5b06617e43" 
-aws ec2 authorize-security-group-ingress --group-id "sg-preview-1" --ip-permissions '{"IpProtocol":"tcp","FromPort":22,"ToPort":22,"IpRanges":[{"CidrIp":"84.210.0.16/32"}]}' '{"IpProtocol":"tcp","FromPort":80,"ToPort":80}' 
-aws ec2 run-instances --image-id "ami-09a9858973b288bdd" --instance-type "t3.micro" --block-device-mappings '{"DeviceName":"/dev/sda1","Ebs":{"Encrypted":false,"DeleteOnTermination":true,"Iops":3000,"SnapshotId":"snap-046802eb841ec1309","VolumeSize":8,"VolumeType":"gp3","Throughput":125}}' --network-interfaces '{"SubnetId":"subnet-0bf59eaad36235385","AssociatePublicIpAddress":true,"DeviceIndex":0,"Groups":["sg-preview-1"]}' --credit-specification '{"CpuCredits":"unlimited"}' --tag-specifications '{"ResourceType":"instance","Tags":[{"Key":"Name","Value":"eksamen_server"}]}' --metadata-options '{"HttpEndpoint":"enabled","HttpPutResponseHopLimit":2,"HttpTokens":"required"}' --private-dns-name-options '{"HostnameType":"ip-name","EnableResourceNameDnsARecord":false,"EnableResourceNameDnsAAAARecord":false}' --count "1" 
+Vi flytter oss til sky. Når oppsettet er satt opp i AWS er det bare å logge inn på server og kjøre følgende scriptet ```commands.sh``` så skal den koble opp alt du trenger.
+Video presentasjon viser hvordan man setter opp i AWS.
