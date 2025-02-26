@@ -25,10 +25,10 @@ INSERT INTO products (name, brand, price, stock) VALUES
 ('Router', 'TP-Link', 899.00, 50);
 
 -- Opprett databasebruker for API
-CREATE USER IF NOT EXISTS 'product-api'@'%' IDENTIFIED BY 'securepass';
+CREATE USER IF NOT EXISTS 'product_api'@'%' IDENTIFIED BY 'securepass';
 
 -- Gi brukeren nødvendige rettigheter
-GRANT ALL PRIVILEGES ON product.* TO 'product-api'@'%';
+GRANT ALL PRIVILEGES ON product.* TO 'product_api'@'%';
 
 -- Aktiver endringer
 FLUSH PRIVILEGES;
