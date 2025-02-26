@@ -15,14 +15,15 @@ curl http://localhost/api/health  # Skal returnere "API OK"
 curl http://localhost/api/products  # Skal returnere en liste med produkter
 ```
 ```
+# Logge inn på docker
 docker login
 ```
 
 ```
-# Bygg Flask API
+# Bygg Flask API med tag
 docker build -t juzt3r/eksamen-api:latest ./app
 
-# Bygg Nginx
+# Bygg Nginx med tag
 docker build -t juzt3r/eksamen-nginx:latest ./nginx
 ```
 
