@@ -15,7 +15,7 @@ CREATE TABLE IF NOT EXISTS products (
 INSERT INTO products (name, brand, price, stock) VALUES
 ('Laptop', 'Dell', 12999.00, 50),
 ('Smartphone', 'Apple', 9999.00, 30),
-('Headphones', 'Sony', 1499.00, 45019),
+('Headphones', 'Sony', 1499.00, 100),
 ('Monitor', 'LG', 2999.00, 40),
 ('Keyboard', 'Logitech', 799.00, 75),
 ('Mouse', 'Razer', 599.00, 60),
@@ -25,10 +25,10 @@ INSERT INTO products (name, brand, price, stock) VALUES
 ('Router', 'TP-Link', 899.00, 50);
 
 -- Opprett databasebruker for API
-CREATE USER IF NOT EXISTS 'product_api'@'%' IDENTIFIED BY 'securepass';
+CREATE USER IF NOT EXISTS 'product-api'@'%' IDENTIFIED BY 'securepass';
 
 -- Gi brukeren nødvendige rettigheter
-GRANT ALL PRIVILEGES ON product.* TO 'product_api'@'%';
+GRANT ALL PRIVILEGES ON product.* TO 'product-api'@'%';
 
 -- Aktiver endringer
 FLUSH PRIVILEGES;

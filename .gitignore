@@ -1,3 +1,4 @@
 *.mkv
 Sandbox/
 EksamensFiler/
+*/nginx/logs/*

@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  api:
+    image: juzt3r/eksamen-api:latest
+    container_name: product_api
+    restart: always
+    environment:
+      DB_USER: product_api
+      DB_PASSWORD: securepass
+      DB_HOST: product-db.c98cugqs6wgz.eu-north-1.rds.amazonaws.com
+      DB_NAME: product_db
+    ports:
+      - "8080:8080"
+  nginx:
+    image: juzt3r/eksamen-nginx:latest
+    container_name: nginx_proxy
+    restart: always
+    ports:
+      - "80:80"
+    depends_on:
+      - api
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx/logs:/var/log/nginx
+
+volumes:
+  mysql_data:

@@ -24,7 +24,7 @@ fi
 echo "Kloner prosjektet fra GitHub..."
 mkdir -p ~/docker  # Sikrer at katalogen finnes
 cd ~/docker
-git clone https://github.com/juzt3r/Eksamen.git || (cd Eksamen && git pull)
+git clone https://github.com/juzt3r/Eksamen.git 
 
 echo "Bytter til riktig mappe..."
 cd Eksamen/Oppgave3
@@ -44,7 +44,7 @@ curl -s -o /dev/null -w "Invalid Product: %{http_code}\n" http://localhost/api/p
 echo "Ferdig! Virker det? "
 echo "Da kan du teste fra ekstern adresse"
 
-ekstern_ip=$(curl -s curl -s ifconfig.me)
+ekstern_ip=$(curl -s ifconfig.me)
 
 # Skriv ut meldingen med riktig IP-adresse
 echo "Prøv fra ekstern adresse:" 
