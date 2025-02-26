@@ -35,20 +35,21 @@ sudo docker-compose up -d --build
 echo "Venter 30 sekunder for å sikre at containerne kjører..."
 sleep 30
 
-echo "Tester API-endepunkter..."
+echo "Tester API-endepunkter... Response:200 is OK"
 curl -s -o /dev/null -w "API Health Check: %{http_code}\n" http://localhost/api/health
 curl -s -o /dev/null -w "All Products: %{http_code}\n" http://localhost/api/products
-curl -s -o /dev/null -w "Product ID 1: %{http_code}\n" http://localhost/api/product/1
+curl -s -o /dev/null -w "Product ID 1: %{http_code}\n" http://localhost/api/products/1
+curl -s -o /dev/null -w "Invalid Product: %{http_code}\n" http://localhost/api/products/Bobby
 
 echo "Ferdig! Virker det? "
 echo "Da kan du teste fra ekstern adresse"
 
-ekstern_ip=$(curl -s http://169.254.169.254/latest/meta-data/public-ipv4)
+ekstern_ip=$(curl -s curl -s ifconfig.me)
 
 # Skriv ut meldingen med riktig IP-adresse
 echo "Prøv fra ekstern adresse:" 
 echo "curl http://$ekstern_ip/api/health"
-echo "curl http://$ekstern_ip/api/product"
-echo "curl http://$ekstern_ip/api/product/1"
+echo "curl http://$ekstern_ip/api/products"
+echo "curl http://$ekstern_ip/api/products/1"
 
 
