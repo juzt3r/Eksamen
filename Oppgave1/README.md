@@ -29,17 +29,24 @@ curl http://localhost/api/products/2
 ## Hovedkomponenter
 
 ### API
-Er et Python image som kjører app.py
+API (Flask)
+En Python-basert container som kjører app.py.
+Håndterer API-forespørsler og kommuniserer med databasen.
+
+
 
 ### nginx
-Er en reverse proxy som redirecter trafikk
+Mottar innkommende forespørsler på port 80.
+Videresender forespørsler til API-serveren på port 8080.
 
 ### DB
-Mysql som holder data
+Inneholder produktdata.
+Fylles med eksempeldata via et oppstartsskript.
 
 
 
 ## Hvordan samhandler de
-bruker prøver å gå inn på http://localhost/api/products
-nginx redirecter requesten til api:8080/api/products
-api snakker med db og henter ut data fra products_db.products
+Brukeren sender en forespørsel til:http://localhost/api/products
+nginx videresender forespørselen til API-serveren på:http://api:8080/api/products
+API-serveren (Flask) henter produktdata fra MySQL-databasen (products_db.products).
+Dataen returneres til brukeren.

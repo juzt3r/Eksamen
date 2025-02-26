@@ -15,10 +15,12 @@ curl http://localhost/api/health  # Skal returnere "API OK"
 curl http://localhost/api/products  # Skal returnere en liste med produkter
 ```
 ```
-# Logge inn på docker
+# Logg inn på Docker Hub
 docker login
 ```
 
+
+## Bygg Docker-images
 ```
 # Bygg Flask API med tag
 docker build -t juzt3r/eksamen-api:latest ./app
@@ -27,22 +29,28 @@ docker build -t juzt3r/eksamen-api:latest ./app
 docker build -t juzt3r/eksamen-nginx:latest ./nginx
 ```
 
+## Push images opp til docker hub
 ```
-# push images opp til docker hub
 # Api
 docker push juzt3r/eksamen-api:latest
 # nginx
 docker push juzt3r/eksamen-nginx:latest
 ```
 
-### Fix docker-compose.yml til å inkludere juzt3r/eksamen-api:lates og juzt3r/eksamen-nginx:lates
+### Oppdater docker-compose.yml
 
+```yml 
+build: ./app byttes til image: juzt3r/eksamen-api:latest
 ```
-# Sletter gamle volumer og containere
-docker-compose down -v  
-# Starter på nytt
-docker-compose up -d  
+```yml
+image: nginx:latest byttes til image: juzt3r/eksamen-nginx:lates
 ```
+
+## Sletter gamle volumer og containere
+
+```bash docker-compose down -v```  
+##  Starter på nytt
+```bash docker-compose up -d```  
 
 
 ### Verifisere at alt fungerer
