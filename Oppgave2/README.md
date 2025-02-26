@@ -40,6 +40,7 @@ docker push juzt3r/eksamen-nginx:latest
 ### Oppdater docker-compose.yml
 
 ``` build: ./app``` byttes til ``` image: juzt3r/eksamen-api:latest```
+
 ``` image: nginx:latest``` byttes til ``` image: juzt3r/eksamen-nginx:lates```
 
 ## Sletter gamle volumer og containere
