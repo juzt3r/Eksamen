@@ -9,7 +9,11 @@
 
 
 [Oppgave 1](Oppgave1/README.md)
+
 [Oppgave 2](Oppgave2/README.md)
+
 [Oppgave 3](Oppgave3/README.md)
+
 [Oppgave 4](Oppgave4/README.md)
+
 [Oppgave 5](Oppgave5/README.md)
