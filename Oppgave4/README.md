@@ -28,6 +28,66 @@ Konfigurering av sikkerhetsgrupper
 Testing av API mot RDS
 ```
 
+## Opprette RDS (Amazon RDS)
+
+Er en Database as a Service
+
+Da oppretter vi en database ved å trykke på ```Create Database```
+* Vi velger engine ```MySQL```
+* Vi gir den et navn ```database-1```
+* ```Template:``` ```Free Tier```
+* ```Master username:``` ```product_api```
+* Under ```Connecticity``` så velger vi ```Connect to an EC2 Computer Resource```
+* Velger ```eksamen_server_emne8``` ```under EC2 instance``` som vi opprettet i oppgave 3
+* Trykk ```Create Database```
+
+
+## Konfigurasjon av docker-compose.yml
+
+* Vi fjerner ```mysql``` containeren 
+* Vi gjør noen endringer på ```api```containeren:
+```yml
+    environment:
+      DB_USER: product_api
+      DB_PASSWORD: securepass
+      DB_HOST: database-1.c98cugqs6wgz.eu-north-1.rds.amazonaws.com #RDS ENDPOINT
+      DB_NAME: product_db
+``` 
+Dette er enviroment-variabler til containere som brukes av ```app.py``` for å koble mot databasen. Hvis ```app.py``` ikke finner disse variablene så bruker den default-verdi. Men i dette tilfelle så vil ``` `DB_HOST``` endre seg. Der vil vi bruke host\endpoint til nye opprettet RDS'en vår.
+
+## Konfigurasjon av Nginx
+Ingen endring på konfigurasjon av Nginx
+
+## Avslutte og rydde opp i gamle Docker-filer
+
+Scriptet ```docker-cleanup.sh``` er ment til å bruke for å slette gamle builds og image. For å starte fra "scratch".
+* Stopper alle containere
+* Sletter alle containere
+* Sletter alle image
+* Sletter alle volums
+* Rydder opp i nettverk.
+
+Har valgt å gjøre det slik, så vi vet at det ikke henger igjen noen ressurser som kan skape problemer.
+
+## Konfigurasjon av databasen
+
+* Installere nødvendig verktøy: ```sudo apt-get update && sudo apt-get install mysql-client -y```
+* Koble til database ```mysql -h <RDS-ENDPOINT> -u product-api -p```
+* Kjør inneholdet i database_setup.sql løste ved å copy&past kode manuelt. Finnes sikkert cleanere måter å gjøre det på.
+
+## Start docker containere
+```docker-compose up -d --build```
+
+## Verifisere tjenesten kjører
+* Lokalt:
+    ```curl http://localhost/api/health```
+    ```curl http://localhost/api/products```
+    ```curl http://localhost/api/products/2```
+* Eksternt: 
+    ```curl http://<EC2-IP>/api/health```
+    ```curl http://<EC2-IP>/api/products```
+    ```curl http://<EC2-IP>/api/products/2```
+
 
 ## Misc
 DB instance identifier: product-db
