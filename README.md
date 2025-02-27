@@ -8,13 +8,13 @@
 | 💻 Docker-Hub   | [https://hub.docker.com/juzt3r](https://hub.docker.com/u/juzt3r) |
 
 
-[Oppgave 1](Oppgave1/README.md)
 ### Opprette mikrotjeneste med api/db/reverse proxy
-[Oppgave 2](Oppgave2/README.md)
+[Oppgave 1](Oppgave1/README.md)
 ### Bygg eget image og last opp til dockerhub
-[Oppgave 3](Oppgave3/README.md)
+[Oppgave 2](Oppgave2/README.md)
 ### Flytt mikrotjeneste til aws
-[Oppgave 4](Oppgave4/README.md)
+[Oppgave 3](Oppgave3/README.md)
 ### bytt fra db-container til RDS
-[Oppgave 5](Oppgave5/README.md)
+[Oppgave 4](Oppgave4/README.md)
 ### Sett opp cloudwatch dashboard
+[Oppgave 5](Oppgave5/README.md)
