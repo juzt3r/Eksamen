@@ -39,15 +39,15 @@ Test av API-et som nå kjører på en EC2 maskin med en public addresse
 Da skal nettverksinfrastrukturen være ferdig.
 
 
-## Serveroppsett
+## Serveroppsett (Build)
 
 * Vi oppretter en server ```eksamen_server_emne8``` med os ```ubuntu```
 
 * Vi velger å bruke eksisterende keypair ```eksamen_ec2``` for vi har allerede gjort dette steget en gang tidligere. Så vi trenger ikke å opprette nye nøkler. 
 
 Men her er en rask beskrivelse av hvordan man gjør dette for første gang. 
-*   *  Vi laster ned nøkkelparet ```nøkkelpar.pam``` windows klarer ikke å håndtere disse. Så vi har brukt et verktøy som følger med putty som heter puttygen for å åpne denne filen og eksperterer ut privatnøkkelen. ```privatekey.ppk```. 
-*   * I putty.exe menyen har du ```Connection-->SSH-->AUTH-->CREDENTIALS``` i feltet som heter ```Private key file for authentication:``` legger du inn full path til ```privatekey.ppk```.
+*     Vi laster ned nøkkelparet ```nøkkelpar.pam``` windows klarer ikke å håndtere disse. Så vi har brukt et verktøy som følger med putty som heter puttygen for å åpne denne filen og eksperterer ut privatnøkkelen. ```privatekey.ppk```. 
+*    I putty.exe menyen har du ```Connection-->SSH-->AUTH-->CREDENTIALS``` i feltet som heter ```Private key file for authentication:``` legger du inn full path til ```privatekey.ppk```.
 
 * Auto-assign public IP: ```Enable```
 
@@ -57,6 +57,28 @@ Men her er en rask beskrivelse av hvordan man gjør dette for første gang.
     * ```custom (8080)```
     
 * Så starter man opp serveren
+
+## Serveroppsett (Config)
+
+Når man har logget inn på serveren kan man kjøre scriptet som heter ```commands.sh``` som ligger på github ```https://github.com/juzt3r/Eksamen/blob/main/Oppgave3/commands.sh``` her kan man bruke flere måter å hente ned dette på. F.eks ```wget https://github.com/juzt3r/Eksamen/blob/main/Oppgave3/commands.sh``` eller som jeg gjorde i videoen copy&paste.
+
+Scriptet gjør resten av jobben for oss. Den gjør følgende steg:
+
+* Oppdaterer apt-databasen med nyeste pakker ```apt-get update -y```
+* Sjekker at git er installert, hvis ikke installerer ```apt-get install -y git```
+* Kloner GitHub-prosjektet ```git clone https://github.com/juzt3r/Eksamen.git``` slik at vi får alle filene vi trenger. Dog er dette steget litt overkill vi kunne bare kjørt wget på et par filer. Men hvis vi ønsker at dette her skal foregå automatisk så er det alltid lurt å tenke litt frem og anta at det kan komme endringer i filstruktur og lignende. 
+* Flytter seg til riktig $path ```~/docker/Eksamen/Oppgave3``` i dette tilfelle
+* Sjekker at docker er installert, hvis ikke installer ```apt-get install -y docker.io```
+* sjekker at Docker Compose er installert, hvis ikke installerer ```apt-get install -y docker-compose```
+* Kjører ```docker-compose up -d --build```. 
+* Venter 30 sekunder
+* Kjører curl-kommandoer for å sjekke om tjenesten er oppe (lokalt)
+* Finner eksterne ip-adressen og echoer ut 3 stringer man kan bruke ekstern for å teste at ting er oppe.
+
+
+
+
+
 
 
 

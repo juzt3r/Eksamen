@@ -5,6 +5,23 @@ set -e  # Stopper skriptet hvis en kommando feiler
 echo "Oppdaterer pakkeliste..."
 sudo apt-get update -y
 
+echo "Sjekker om git er installert..."
+if ! command -v git &> /dev/null; then
+    echo "Installerer git..."
+    sudo apt-get install -y git
+else
+    echo "Git er allerede installert."
+fi
+
+echo "Kloner prosjektet fra GitHub..."
+mkdir -p ~/docker  # Sikrer at katalogen finnes
+cd ~/docker
+git clone https://github.com/juzt3r/Eksamen.git 
+
+echo "Bytter til riktig mappe..."
+cd Eksamen/Oppgave3
+
+
 echo "Sjekker om Docker er installert..."
 if ! command -v docker &> /dev/null; then
     echo "Installerer Docker..."
@@ -21,13 +38,6 @@ else
     echo "Docker Compose er allerede installert."
 fi
 
-echo "Kloner prosjektet fra GitHub..."
-mkdir -p ~/docker  # Sikrer at katalogen finnes
-cd ~/docker
-git clone https://github.com/juzt3r/Eksamen.git 
-
-echo "Bytter til riktig mappe..."
-cd Eksamen/Oppgave3
 
 echo "Starter Docker Compose..."
 sudo docker-compose up -d --build
