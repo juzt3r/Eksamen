@@ -23,5 +23,18 @@ Start docker-compose.yml (docker-compose up -d)
 Test av API-et som nå kjører på en EC2 maskin med en public addresse
 ``` 
 
+
+## Oppsett av infrastruktur
+
+* Vi oppretter en VPC (Virtual Private Cloud) og gir den navn ```eksamen_vpc``` og gir den et nettverk. ```10.0.0.0/16```
+
+* Deretter oppretter vi et subnet som vi kaller ```eksamen_subnet``` og forteller hvilke ip-adresser som skal være tilgjengelig der. Her bruker vi ```10.0.0.0/24``` for vi trenger ikke så mye pr. nå. Vi kobler dette subnettet til ```eksamen_vpc```
+
+* Neste steg blir å opprette en Public Gateway som vi kaller ```eksamen_gw``` så vi kan koble til mot internett. Vi tilkobler denne gatewayen til vår VPC ```eksamen_vpc```.  
+
+* Vi oppretter en ny route table som vi kaller ```eksamen_route``` denne kobler vi til ```eksamen_vpc``` og lager en ny regel som sier at trafikk fra ```0.0.0.0/0``` går til ```eksamen_gw```  
+
+* Når vi har gjort det tar vi ```subnet association``` på ```eksamen_route``` som forteller subnettet hvilken route den skal bruke
+
 Vi flytter oss til sky. Når oppsettet er satt opp i AWS er det bare å logge inn på server og kjøre følgende scriptet ```commands.sh``` så skal den koble opp alt du trenger.
 Video presentasjon viser hvordan man setter opp i AWS.

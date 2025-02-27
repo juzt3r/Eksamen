@@ -8,7 +8,7 @@ services:
     environment:
       DB_USER: product_api
       DB_PASSWORD: securepass
-      DB_HOST: product-db.c98cugqs6wgz.eu-north-1.rds.amazonaws.com
+      DB_HOST: database-1.c98cugqs6wgz.eu-north-1.rds.amazonaws.com
       DB_NAME: product_db
     ports:
       - "8080:8080"
