@@ -79,10 +79,12 @@ Scriptet gjør resten av jobben for oss. Den gjør følgende steg:
 
 
 
+## Docker konfigurasjon
+
+Denne skal være lik ```Oppgave2``` det er ikke gjort noen endringer på den. Henter ned image for MSSQL og min egen build for nginx og api.
 
 
-
-MERKNAD: 
+## MERKNAD: 
 
 Har ikke brukt SCP som oppgaven sier da jeg har brukt git for å få filene jeg trenger.
 ```man scp```
