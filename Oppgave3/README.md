@@ -82,5 +82,7 @@ Scriptet gjør resten av jobben for oss. Den gjør følgende steg:
 
 
 
-Vi flytter oss til sky. Når oppsettet er satt opp i AWS er det bare å logge inn på server og kjøre følgende scriptet ```commands.sh``` så skal den koble opp alt du trenger.
-Video presentasjon viser hvordan man setter opp i AWS.
+MERKNAD: 
+
+Har ikke brukt SCP som oppgaven sier da jeg har brukt git for å få filene jeg trenger.
+```man scp```
