@@ -36,5 +36,29 @@ Test av API-et som nå kjører på en EC2 maskin med en public addresse
 
 * Når vi har gjort det tar vi ```subnet association``` på ```eksamen_route``` som forteller subnettet hvilken route den skal bruke
 
+Da skal nettverksinfrastrukturen være ferdig.
+
+
+## Serveroppsett
+
+* Vi oppretter en server ```eksamen_server_emne8``` med os ```ubuntu```
+
+* Vi velger å bruke eksisterende keypair ```eksamen_ec2``` for vi har allerede gjort dette steget en gang tidligere. Så vi trenger ikke å opprette nye nøkler. 
+
+Men her er en rask beskrivelse av hvordan man gjør dette for første gang. 
+*   *  Vi laster ned nøkkelparet ```nøkkelpar.pam``` windows klarer ikke å håndtere disse. Så vi har brukt et verktøy som følger med putty som heter puttygen for å åpne denne filen og eksperterer ut privatnøkkelen. ```privatekey.ppk```. 
+*   * I putty.exe menyen har du ```Connection-->SSH-->AUTH-->CREDENTIALS``` i feltet som heter ```Private key file for authentication:``` legger du inn full path til ```privatekey.ppk```.
+
+* Auto-assign public IP: ```Enable```
+
+* Inbound Security Group Rules:
+    * ```ssh```
+    * ```http```
+    * ```custom (8080)```
+    
+* Så starter man opp serveren
+
+
+
 Vi flytter oss til sky. Når oppsettet er satt opp i AWS er det bare å logge inn på server og kjøre følgende scriptet ```commands.sh``` så skal den koble opp alt du trenger.
 Video presentasjon viser hvordan man setter opp i AWS.
