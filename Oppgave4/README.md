@@ -89,21 +89,7 @@ Har valgt å gjøre det slik, så vi vet at det ikke henger igjen noen ressurser
     ```curl http://<EC2-IP>/api/products/2```
 
 
-## Misc
-DB instance identifier: product-db
-Master username: product_api
-master password: securepass
+## Forbedringer
 
+Den laveste hengende frukten her er å få fylt databasen med test-data på en bedre måte. Her kunne man hatt noe script som gjør dette eller om det finnes noen måter i RDS å starte med init.sql eller lignende
 
-
-
-
-## Commands
-```bash
-sudo apt-get update && sudo apt-get install mysql-client -y
-mysql -h <RDS-ENDPOINT> -u product-api -p
-chmox +x docker-cleanup.sh
-./docker-cleanup.sh
-endre <RDS-ENDPOINT> i docker-compose.yml
-docker-compose up -d --build
-```
